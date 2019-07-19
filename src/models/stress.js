@@ -13,6 +13,11 @@ const StressSchema = new mongoose.Schema(
     {
         type: String
     },
+    date:
+    {
+        type: String,
+        required: true,
+    },
     userId:
     {
         type: mongoose.Schema.Types.ObjectId,
