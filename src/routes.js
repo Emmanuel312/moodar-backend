@@ -13,7 +13,7 @@ router.use(authMiddleware)
 
 // rotas autenticadas
 router.post('/stress/create', controllers.stressController.create)
-router.post('/stress/update/:id', controllers.stressController.update)
+router.put('/stress/update/:id', controllers.stressController.update)
 router.get('/stress/list', controllers.stressController.list)
 
 module.exports = router
