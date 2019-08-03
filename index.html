@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <h1>ola<h1>
+    </body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js" ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" ></script>
+    
+    <script>
+        const socket = io('http://10.0.0.105:3000')
+        var token = null
+        axios.post('http://10.0.0.105:3000/signin', {email:'a',password:'a'}).then(({data}) => 
+        {
+        
+            axios.post('http://10.0.0.105:3000/stress/create', {level:1,date:"30/12/1992"}, {headers: { 'authorization': "Bearer " + data.token}}).then(({data:d}) =>
+            {
+                axios.put(`http://10.0.0.105:3000/stress/update/${d._id}`, {level:2},{headers: { 'authorization': "Bearer " + data.token}}).then(console.log)
+            })
+        }).catch(console.log)
+        
+        socket.on('create', (data) => console.log(data))
+        socket.on('update', (data) => console.log(data))
+    </script>
+<html>

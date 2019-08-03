@@ -10,6 +10,8 @@ const { url_database_config } = require('./config/database')
 mongoose.connect(process.env.URL_DATABASE_CONFIG || url_database_config, { useNewUrlParser: true })
 mongoose.set('useCreateIndex', true);
 
+io.on('connection', socket => console.log('ola'))
+ 
 app.use((req,res,next) =>
 {
     req.io = io
